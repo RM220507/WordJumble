@@ -17,7 +17,7 @@ async function fetchJSONData(path) {
     return data
 }
 
-fetchJSONData("./words/6.json").then(words => {
+fetchJSONData("./words/jumbles.json").then(words => {
     const random_word = words[Math.floor(Math.random() * words.length)];
     const jumble = random_word.shuffle();
 
