@@ -72,7 +72,7 @@ async function share_jumble() {
     const share_data = {
         title : "Word Jumble",
         text : `Try this word jumble: ${jumble}!`,
-        url : `https://RM220507.github.io/WordJumble/index.html?${jumble}`
+        url : `https://RM220507.github.io/WordJumble/index.html?jumble=${jumble}`
     };
     await navigator.share(share_data);
 }
