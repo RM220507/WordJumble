@@ -42,23 +42,23 @@ async function check_all() {
     jumble = document.getElementById("jumble").innerText;
 
     length_3 = document.getElementById("3-letter");
-    length_3_correct = await check(3, length_3.value, jumble);
+    length_3_correct = await check(3, length_3.value.toLowerCase(), jumble);
     set_border(length_3, length_3_correct);
 
     length_4 = document.getElementById("4-letter");
-    length_4_correct = await check(4, length_4.value, jumble);
+    length_4_correct = await check(4, length_4.value.toLowerCase(), jumble);
     set_border(length_4, length_4_correct);
 
     length_5 = document.getElementById("5-letter");
-    length_5_correct = await check(5, length_5.value, jumble);
+    length_5_correct = await check(5, length_5.value.toLowerCase(), jumble);
     set_border(length_5, length_5_correct);
 
     length_6 = document.getElementById("6-letter");
-    length_6_correct = await check(6, length_6.value, jumble);
+    length_6_correct = await check(6, length_6.value.toLowerCase(), jumble);
     set_border(length_6, length_6_correct);
 
     if (length_3_correct && length_4_correct && length_5_correct && length_6_correct) {
-        location.reload();
+        new_jumble();
     }
 }
 
