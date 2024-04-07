@@ -26,16 +26,40 @@ function display(jumble) {
     document.getElementById("6-letter").value = "";
 }
 
+function parse_cookie() {
+    console.log(document.cookie);
+    const cookie_fields = document.cookie.split(";");
+
+    let cookie_data = {};
+    cookie_fields.forEach(element => {
+        const field_data = element.split("=");
+        if (field_data.length == 2) {
+            cookie_data[field_data[0]] = field_data[1];
+        }
+    });
+    console.log(cookie_data);
+    return cookie_data;
+}
+
 function load() {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    if (urlParams.has("jumble") && urlParams.get("jumble").length == 6) {
-        display(urlParams.get("jumble"));
+    const query_string = window.location.search;
+    const url_params = new URLSearchParams(query_string);
+
+    const cookie_data = parse_cookie();
+
+    if (url_params.has("jumble") && url_params.get("jumble").length == 6) {
+        let jumble = url_params.get("jumble");
+        document.cookie = `jumble=${jumble};path=/;max-age=604800;SameSite=Strict`;
+        display(jumble);
+    } else if ("jumble" in cookie_data && cookie_data["jumble"].length == 6) {
+        document.cookie = `jumble=${cookie_data["jumble"]};path=/;max-age=604800;SameSite=Strict`;
+        display(cookie_data["jumble"]);
     } else {
         fetchJSONData("./words/jumbles.json").then(words => {
             const random_word = words[Math.floor(Math.random() * words.length)];
             const jumble = random_word.shuffle();
 
+            document.cookie = `jumble=${jumble};path=/;max-age=604800;SameSite=Strict`;
             display(jumble);
         });
     }

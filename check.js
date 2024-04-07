@@ -61,3 +61,18 @@ async function check_all() {
         location.reload();
     }
 }
+
+function new_jumble() {
+    document.cookie = `jumble=empty;path=/;max-age=604800;SameSite=Strict`;
+    location.reload();
+}
+
+async function share_jumble() {
+    const jumble = document.getElementById("jumble").innerText;
+    const share_data = {
+        title : "Word Jumble",
+        text : `Try this word jumble: ${jumble}!`,
+        url : `https://RM220507.github.io/WordJumble/index.html?${jumble}`
+    };
+    await navigator.share(share_data);
+}
