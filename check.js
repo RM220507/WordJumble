@@ -14,7 +14,7 @@ async function fetchJSONData(path) {
     return data
 }
 
-function check(length, input, jumble) {
+async function check(length, input, jumble) {
     if (input.length != length) {
         return false;
     }
@@ -24,12 +24,10 @@ function check(length, input, jumble) {
             return false;
         }
     }
-    
-    let valid = fetchJSONData(`./words/${length}.json`).then(words => {
+
+    return await fetchJSONData(`./words/${length}.json`).then(words => {
         return words.includes(input);
     });
-
-    return valid;
 }
 
 function set_border(element, correct) {
@@ -40,23 +38,23 @@ function set_border(element, correct) {
     }
 }
 
-function check_all() {
+async function check_all() {
     jumble = document.getElementById("jumble").innerText;
 
     length_3 = document.getElementById("3-letter");
-    length_3_correct = check(3, length_3.value, jumble);
+    length_3_correct = await check(3, length_3.value, jumble);
     set_border(length_3, length_3_correct);
 
     length_4 = document.getElementById("4-letter");
-    length_4_correct = check(4, length_4.value, jumble);
+    length_4_correct = await check(4, length_4.value, jumble);
     set_border(length_4, length_4_correct);
 
     length_5 = document.getElementById("5-letter");
-    length_5_correct = check(5, length_5.value, jumble);
+    length_5_correct = await check(5, length_5.value, jumble);
     set_border(length_5, length_5_correct);
 
     length_6 = document.getElementById("6-letter");
-    length_6_correct = check(6, length_6.value, jumble);
+    length_6_correct = await check(6, length_6.value, jumble);
     set_border(length_6, length_6_correct);
 
     if (length_3_correct && length_4_correct && length_5_correct && length_6_correct) {

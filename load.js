@@ -17,14 +17,26 @@ async function fetchJSONData(path) {
     return data
 }
 
-fetchJSONData("./words/jumbles.json").then(words => {
-    const random_word = words[Math.floor(Math.random() * words.length)];
-    const jumble = random_word.shuffle();
-
+function display(jumble) {
     document.getElementById("jumble").innerText = jumble;
 
     document.getElementById("3-letter").value = "";
     document.getElementById("4-letter").value = "";
     document.getElementById("5-letter").value = "";
     document.getElementById("6-letter").value = "";
-});
+}
+
+function load() {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    if (urlParams.has("jumble") && urlParams.get("jumble").length == 6) {
+        display(urlParams.get("jumble"));
+    } else {
+        fetchJSONData("./words/jumbles.json").then(words => {
+            const random_word = words[Math.floor(Math.random() * words.length)];
+            const jumble = random_word.shuffle();
+
+            display(jumble);
+        });
+    }
+}
