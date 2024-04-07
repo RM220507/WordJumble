@@ -1,0 +1,40 @@
+body {
+    background-color: #020202;
+    display: flex;
+    font-family: sans-serif;
+}
+
+.main-container {
+    background-color: #058C42;
+    border-radius: 20px;
+    max-width: 500px;
+    display: flex;
+    margin: auto;
+    height: 500px;
+    flex-flow: wrap;
+    padding: 0;
+}
+
+.jumble {
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+input {
+    width: 95%;
+    display: flex;
+    margin: auto;
+    font-size: 40px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 95%;
+    margin: auto;
+    font-size: 40px;
+    text-align: center;
+    border-radius: 10px;
+}
