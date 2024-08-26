@@ -1,51 +1,51 @@
 body {
-    background-color: #020202;
     display: flex;
-    font-family: sans-serif;
     height: 100vh;
-    width: 100vw;
+    width: 100%;
     margin: 0;
-    padding: 0;
-    border: 0;
     box-sizing: border-box;
+    background-color: black;
+    overflow-x: hidden;
 }
 
 .main-container {
-    background-color: #058C42;
-    border-radius: 20px;
+    background-color: green;
+    max-width: 70em;
+    width: 100%;
+    border-radius: 10px;
+    margin: auto;
     display: flex;
     flex-flow: wrap;
-    margin: auto;
-    margin-left: 10%;
-    margin-right: 10%;
+    padding: 1em;
     box-sizing: border-box;
-    padding: 20px;
 }
 
 .jumble {
-    font-size: 80pt;
+    font-size: 60px;
     color: white;
     text-align: center;
     width: 100%;
+    font-family: sans-serif;
 }
 
-input {
-    width: 95%;
-    display: flex;
-    margin: auto;
-    font-size: 40pt;
-    border-radius: 10px;
+input, button {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     box-sizing: border-box;
-    padding: 20px;
-    margin: 20px;
 }
 
 button {
-    width: 95%;
-    margin: auto;
-    font-size: 40pt;
-    text-align: center;
-    border-radius: 10px;
-    padding: 30px;
-    margin: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.9;
 }
